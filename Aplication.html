@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>منصة أنوار | English Academy</title>
+
+<!-- SEO & PWA Meta Tags -->
+<meta name="description" content="منصة أنوار الحجامي - منصة أكاديمية متكاملة لتعلم اللغة الإنجليزية من المستوى B1 إلى B2">
+<meta name="theme-color" content="#0f0e17">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="منصة أنوار">
+<meta name="application-name" content="أنوار أكاديمي">
+<meta name="msapplication-TileColor" content="#0f0e17">
+<meta name="msapplication-TileImage" content="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230f0e17'/><text x='50' y='70' font-size='50' text-anchor='middle' fill='white' font-family='Arial'>A</text></svg>">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Manifest (injected via JS for single-file solution) -->
+<script>
+// Generate and inject manifest dynamically
+const manifestData = {
+  name: "منصة أنوار | English Academy",
+  short_name: "أنوار أكاديمي",
+  description: "منصة تعلم اللغة الإنجليزية الأكاديمية - المستوى B1 إلى B2",
+  start_url: ".",
+  display: "standalone",
+  theme_color: "#0f0e17",
+  background_color: "#f5f0e8",
+  orientation: "portrait",
+  categories: ["education", "productivity"],
+  screenshots: [],
+  icons: [
+    {
+      src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230f0e17'/%3E%3Ctext x='50' y='70' font-size='45' text-anchor='middle' fill='%23a5b4fc' font-family='Arial'%3Eأ%3C/text%3E%3C/svg%3E",
+      sizes: "any",
+      type: "image/svg+xml",
+      purpose: "any maskable"
+    }
+  ],
+  shortcuts: [
+    { name: "📘 متابعة التعلم", url: "/?page=lessons-b1", icons: [{ src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M4 6h16v12H4z'/%3E%3C/svg%3E", sizes: "any" }] },
+    { name: "✏️ اختبار سريع", url: "/?page=quiz", icons: [{ src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M9 12h6m-6 4h6m2-10H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2z'/%3E%3C/svg%3E", sizes: "any" }] }
+  ]
+};
+
+const manifestBlob = new Blob([JSON.stringify(manifestData)], {type: 'application/json'});
+const manifestURL = URL.createObjectURL(manifestBlob);
+const manifestLink = document.createElement('link');
+manifestLink.rel = 'manifest';
+manifestLink.href = manifestURL;
+document.head.appendChild(manifestLink);
+</script>
+
+<style>
+:root {
+  --ink: #0f0e17;
+  --paper: #fffcf7;
+  --cream: #f5f0e8;
+  --indigo: #2d2a8a;
+  --indigo-mid: #4338ca;
+  --indigo-light: #e8e6ff;
+  --gold: #c8960c;
+  --gold-light: #fef3c7;
+  --teal: #0f766e;
+  --teal-light: #ccfbf1;
+  --rose: #be185d;
+  --rose-light: #fce7f3;
+  --slate: #334155;
+  --muted: #94a3b8;
+  --border: #e2ddd5;
+  --success: #059669;
+  --danger: #dc2626;
+  --purple: #7c3aed;
+  --purple-light: #f5f3ff;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  direction: rtl;
+}
+
+/* Custom Scrollbar - Premium */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--cream); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--indigo); }
+
+/* Header Premium */
+header {
+  background: var(--ink);
+  position: sticky; top: 0; z-index: 200;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+  backdrop-filter: blur(0px);
+}
+.header-top {
+  max-width: 1100px; margin: 0 auto;
+  padding: 14px 20px 10px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.brand-title {
+  font-size: 22px; font-weight: 900; color: white; letter-spacing: -0.5px;
+  line-height: 1; font-family: 'Playfair Display', serif; direction: ltr;
+}
+.brand-title span { color: #a5b4fc; background: linear-gradient(135deg, #a5b4fc, #c7d2fe); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.brand-sub {
+  font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 4px;
+  letter-spacing: 0.3px;
+}
+.header-meta { text-align: left; }
+.header-meta .prof { font-size: 13px; font-weight: 700; color: #a5b4fc; }
+.header-meta .info { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+
+/* Navigation - Premium */
+nav {
+  max-width: 1100px; margin: 0 auto;
+  padding: 8px 20px;
+  display: flex; gap: 4px; overflow-x: auto;
+  scrollbar-width: none;
+}
+nav::-webkit-scrollbar { display: none; }
+.nav-pill {
+  cursor: pointer;
+  padding: 7px 15px;
+  border-radius: 50px;
+  font-size: 12px; font-weight: 700;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+  color: rgba(255,255,255,0.5);
+  border: 1px solid transparent;
+  user-select: none;
+}
+.nav-pill:hover { color: white; border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); }
+.nav-pill.active {
+  background: white; color: var(--indigo);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+
+/* Main */
+main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 80px; }
+
+/* Pages */
+.page { display: none; animation: fadeUp 0.35s ease; }
+.page.active { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cards Premium */
+.card {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+.card-hover {
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(45,42,138,0.14);
+  border-color: var(--indigo-light);
+}
+
+/* Hero Premium */
+.hero {
+  background: linear-gradient(135deg, #0f0e17 0%, #1e1b4b 50%, #312e81 100%);
+  border-radius: 24px;
+  padding: 36px 32px;
+  color: white;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -40px; left: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(165,180,252,0.15), transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: 'أ';
+  font-family: 'Playfair Display', serif;
+  font-size: 180px; font-weight: 900;
+  position: absolute; left: -20px; bottom: -50px;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+.hero h2 { font-size: 26px; font-weight: 900; margin-bottom: 8px; }
+.hero p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; max-width: 480px; }
+
+/* Buttons Premium */
+.btn-primary {
+  background: white; color: var(--indigo);
+  padding: 9px 22px; border-radius: 50px;
+  font-weight: 800; font-size: 13px;
+  cursor: pointer; border: none;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  font-family: 'Tajawal', sans-serif;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+.btn-ghost {
+  background: rgba(255,255,255,0.12);
+  color: white;
+  padding: 9px 22px; border-radius: 50px;
+  font-weight: 700; font-size: 13px;
+  cursor: pointer; border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.2s;
+  font-family: 'Tajawal', sans-serif;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.2); }
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+@media (min-width: 600px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+.stat-card {
+  background: white; border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 16px; text-align: center;
+  transition: all 0.2s;
+}
+.stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.stat-num { font-size: 26px; font-weight: 900; line-height: 1; }
+.stat-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+/* Progress Bar Premium */
+.progress-bar {
+  height: 10px; background: #e2e8f0;
+  border-radius: 50px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--indigo), #818cf8);
+  border-radius: 50px;
+  transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.progress-label { font-size: 13px; font-weight: 700; }
+.progress-pct { font-size: 13px; font-weight: 800; color: var(--indigo); }
+
+/* Timeline */
+.timeline-line { position: relative; padding-right: 32px; padding-bottom: 24px; }
+.timeline-line::before { content: ''; position: absolute; right: 10px; top: 20px; width: 2px; height: 100%; background: #e2e8f0; }
+.timeline-line:last-child::before { display: none; }
+.timeline-dot { position: absolute; right: 0; top: 2px; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; z-index: 2; }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(45,42,138,0.4)} 50%{box-shadow:0 0 0 6px rgba(45,42,138,0)} }
+
+/* Badges */
+.badge { display: inline-block; padding: 3px 10px; border-radius: 50px; font-size: 11px; font-weight: 700; }
+.badge-b1 { background: var(--indigo-light); color: var(--indigo); }
+.badge-b2 { background: var(--teal-light); color: var(--teal); }
+.badge-new { background: var(--gold-light); color: #92400e; }
+.badge-tip { background: var(--purple-light); color: var(--purple); }
+
+/* Section Header */
+.section-header { margin-bottom: 20px; }
+.section-title { font-size: 20px; font-weight: 900; }
+.section-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+/* Lessons Grid */
+.lessons-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 700px) { .lessons-grid { grid-template-columns: 1fr 1fr; } }
+
+.lesson-card {
+  background: white;
+  border-radius: 18px;
+  border: 1.5px solid var(--border);
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.lesson-card::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 4px; height: 100%;
+  border-radius: 0 18px 18px 0;
+}
+.lesson-card.b1::before { background: var(--indigo); }
+.lesson-card.b2::before { background: var(--teal); }
+.lesson-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  border-color: #c7d2fe;
+}
+.lesson-card.done { opacity: 0.7; }
+.lesson-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.lesson-emoji { font-size: 28px; }
+.lesson-title { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+.lesson-en { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); direction: ltr; text-align: right; }
+.lesson-meta { display: flex; gap: 12px; margin-top: 12px; }
+.lesson-meta-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--muted); }
+
+/* Modal Premium */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  z-index: 500;
+  align-items: center; justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: white; border-radius: 28px;
+  max-width: 700px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
+  animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+}
+@keyframes modalIn { from { opacity: 0; transform: scale(0.9) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+/* Lesson Detail */
+.lesson-detail-hero {
+  background: linear-gradient(135deg, #1e1b4b, #4338ca);
+  padding: 28px 28px 24px;
+  color: white;
+  border-radius: 28px 28px 0 0;
+}
+.lesson-detail-body { padding: 28px; }
+.grammar-box {
+  background: var(--indigo-light);
+  border-radius: 14px; padding: 16px 18px;
+  margin: 16px 0;
+}
+.grammar-box h4 { font-size: 13px; font-weight: 800; color: var(--indigo); margin-bottom: 8px; }
+.example-box {
+  background: var(--cream);
+  border-right: 3px solid var(--gold);
+  padding: 12px 16px;
+  border-radius: 0 10px 10px 0;
+  margin: 8px 0;
+  font-size: 13px;
+}
+.en-line { font-family: 'JetBrains Mono', monospace; font-size: 12px; direction: ltr; text-align: left; color: var(--indigo); font-weight: 600; }
+.ar-line { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* Vocab Grid */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (min-width: 600px) { .vocab-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px) { .vocab-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.flip-card { perspective: 900px; cursor: pointer; height: 140px; }
+.flip-inner {
+  position: relative; width: 100%; height: 100%;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+.flip-front, .flip-back {
+  position: absolute; width: 100%; height: 100%;
+  backface-visibility: hidden; border-radius: 16px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 14px; text-align: center;
+}
+.flip-front {
+  background: white;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.flip-back {
+  background: linear-gradient(135deg, var(--ink), var(--indigo));
+  color: white;
+  transform: rotateY(180deg);
+}
+.flip-word { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 600; color: var(--indigo); direction: ltr; }
+.flip-hint { font-size: 10px; color: var(--muted); margin-top: 4px; }
+.flip-ar { font-size: 15px; font-weight: 700; }
+.flip-usage { font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 6px; font-family: 'JetBrains Mono', monospace; direction: ltr; }
+
+/* Quiz Premium */
+.quiz-container { max-width: 680px; margin: 0 auto; }
+.quiz-q-num { font-size: 11px; font-weight: 800; color: var(--muted); letter-spacing: 1px; margin-bottom: 8px; }
+.quiz-question { font-size: 18px; font-weight: 800; line-height: 1.6; margin-bottom: 8px; }
+.quiz-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; color: var(--indigo);
+  direction: ltr; text-align: left;
+  background: var(--indigo-light);
+  padding: 10px 14px; border-radius: 10px;
+  margin-bottom: 24px;
+}
+.quiz-options { display: flex; flex-direction: column; gap: 10px; }
+.quiz-option {
+  cursor: pointer;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: white;
+  transition: all 0.2s;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; font-weight: 600;
+  text-align: right;
+}
+.quiz-option:hover { border-color: var(--indigo); background: var(--indigo-light); }
+.quiz-option.correct { border-color: var(--success); background: #d1fae5; color: #065f46; }
+.quiz-option.wrong { border-color: var(--danger); background: #fee2e2; color: #991b1b; }
+.option-letter {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800;
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+.quiz-result { text-align: center; padding: 32px; }
+.result-score { font-size: 56px; font-weight: 900; color: var(--indigo); line-height: 1; }
+.result-label { font-size: 18px; font-weight: 700; margin: 8px 0; }
+
+/* Quiz Selector */
+.quiz-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.quiz-type-card {
+  background: white; border-radius: 18px;
+  border: 1.5px solid var(--border); padding: 22px;
+  cursor: pointer; transition: all 0.25s; text-align: center;
+}
+.quiz-type-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(45,42,138,0.14); border-color: var(--indigo-light); }
+
+/* Writing Templates */
+.writing-templates { display: flex; flex-direction: column; gap: 12px; }
+.template-card {
+  background: white; border-radius: 18px;
+  border: 1px solid var(--border); padding: 20px;
+}
+.template-title { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+.template-sub { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+.phrase-list { display: flex; flex-direction: column; gap: 6px; }
+.phrase-item {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--cream); border-radius: 10px; padding: 10px 14px;
+}
+.phrase-en { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--indigo); direction: ltr; }
+.phrase-ar { font-size: 12px; color: var(--muted); }
+.copy-btn {
+  background: none; border: none; cursor: pointer;
+  font-size: 16px; padding: 2px 6px;
+  border-radius: 6px; transition: all 0.15s;
+}
+.copy-btn:hover { background: #e2e8f0; }
+
+/* Abstract Template */
+.abstract-row {
+  display: grid; grid-template-columns: auto 1fr; gap: 0;
+  border-radius: 12px; overflow: hidden; border: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+.abstract-label {
+  padding: 14px 16px; display: flex; align-items: center; min-width: 120px;
+}
+.abstract-body { padding: 14px 16px; background: white; }
+
+/* Tips Grid */
+.tips-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 700px) { .tips-grid { grid-template-columns: 1fr 1fr; } }
+.tip-card-item {
+  background: white; border-radius: 16px;
+  border: 1px solid var(--border); padding: 18px 20px;
+  transition: all 0.2s;
+}
+.tip-card-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); transform: translateY(-2px); }
+
+/* Checklist */
+.check-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--slate); cursor: pointer;
+  padding: 10px 14px; border-radius: 10px;
+  transition: background 0.15s;
+}
+.check-item:hover { background: var(--cream); }
+.check-item input { width: 16px; height: 16px; accent-color: var(--teal); cursor: pointer; }
+
+/* Notes Area */
+.notes-area {
+  width: 100%; min-height: 220px;
+  border: 2px solid var(--border); border-radius: 16px;
+  padding: 16px; font-family: 'Tajawal', sans-serif;
+  font-size: 14px; resize: vertical;
+  background: white; color: var(--ink);
+  outline: none; transition: border-color 0.2s;
+}
+.notes-area:focus { border-color: var(--indigo); }
+.save-btn {
+  background: var(--indigo); color: white;
+  padding: 10px 24px; border-radius: 50px;
+  font-weight: 800; font-size: 14px;
+  border: none; cursor: pointer;
+  margin-top: 12px;
+  transition: all 0.2s;
+  font-family: 'Tajawal', sans-serif;
+}
+.save-btn:hover { background: var(--indigo-mid); transform: translateY(-2px); }
+.saved-note-item {
+  background: white; border-radius: 14px;
+  border: 1px solid var(--border); padding: 14px 16px;
+  margin-bottom: 10px;
+  font-size: 13px; line-height: 1.7;
+  position: relative;
+}
+.note-date { font-size: 10px; color: var(--muted); margin-bottom: 4px; }
+.note-del {
+  position: absolute; top: 10px; left: 10px;
+  background: none; border: none; cursor: pointer;
+  font-size: 14px; opacity: 0.4; transition: opacity 0.2s;
+}
+.note-del:hover { opacity: 1; }
+
+/* Quick Access */
+.quick-btn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; border-radius: 12px;
+  background: var(--cream); border: 1px solid var(--border);
+  cursor: pointer; transition: all 0.2s; font-size: 13px; font-weight: 700;
+}
+.quick-btn:hover { background: var(--indigo-light); border-color: var(--indigo); color: var(--indigo); }
+
+/* Vocab Filters */
+.vocab-filter-btn {
+  padding: 7px 16px; border-radius: 50px;
+  font-size: 12px; font-weight: 700;
+  cursor: pointer; border: 1px solid var(--border);
+  background: white; color: var(--slate);
+  transition: all 0.2s;
+  font-family: 'Tajawal', sans-serif;
+}
+.vocab-filter-btn.active { background: var(--indigo); color: white; border-color: var(--indigo); }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .nav-pill { padding: 6px 10px; font-size: 11px; }
+  .hero { padding: 24px 20px; }
+  .hero h2 { font-size: 20px; }
+  .modal { border-radius: 20px; max-height: 92vh; }
+}
+
+/* Two Column Layout */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+/* Install Button for PWA */
+.install-banner {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--indigo);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 300;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  display: none;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  font-family: 'Tajawal', sans-serif;
+}
+.install-banner.show { display: flex; }
+.install-banner:hover { background: var(--indigo-mid); transform: translateY(-2px); }
+</style>
+</head>
+<body>
+
+<!-- Install Banner for PWA -->
+<button class="install-banner" id="installBtn">
+  📲 تثبيت التطبيق على جهازك
+</button>
+
+<header>
+  <div class="header-top">
+    <div>
+      <div class="brand-title">English Academy <span>/ أنوار</span></div>
+      <div class="brand-sub">كلية الآداب والعلوم الإنسانية — ظهر المهراز — فاس</div>
+    </div>
+    <div class="header-meta">
+      <div class="prof">Pr. Mohammed BELLET</div>
+      <div class="info">Intermediate · Group 2 · Wed 12:30–14:00 · Salle BC6</div>
+    </div>
+  </div>
+  <nav>
+    <div class="nav-pill active" onclick="showPage('home')">🏠 الرئيسية</div>
+    <div class="nav-pill" onclick="showPage('lessons-b1')">📘 B1 دروس</div>
+    <div class="nav-pill" onclick="showPage('lessons-b2')">📗 B2 دروس</div>
+    <div class="nav-pill" onclick="showPage('vocab')">🔤 المفردات</div>
+    <div class="nav-pill" onclick="showPage('quiz')">✏️ اختبار</div>
+    <div class="nav-pill" onclick="showPage('writing')">✍️ الكتابة</div>
+    <div class="nav-pill" onclick="showPage('tips')">💡 نصائح</div>
+    <div class="nav-pill" onclick="showPage('notes')">📝 مفكرتي</div>
+  </nav>
+</header>
+
+<main>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div style="position:relative;z-index:2">
+      <div style="font-size:12px;color:#a5b4fc;margin-bottom:6px;">مرحباً بك في منصتك الشخصية 👋</div>
+      <h2>أهلاً، أنوار الحجامي!</h2>
+      <p>منصتك الأكاديمية لإتقان الإنجليزية من المستوى B1 إلى B2. دروس، مفردات، اختبارات، وأدوات الكتابة البحثية في مكان واحد.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('lessons-b1')">ابدأ التعلم →</button>
+        <button class="btn-ghost" onclick="showPage('quiz')">اختبر نفسك ✏️</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-num" style="color:var(--indigo)">12</div><div class="stat-label">درساً متاحاً</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--teal)">80+</div><div class="stat-label">كلمة أكاديمية</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--gold)">3</div><div class="stat-label">اختبارات تفاعلية</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--rose)">B2</div><div class="stat-label">هدفنا</div></div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:20px;">
+    <div class="card" style="padding:22px;">
+      <h3 style="font-size:15px;font-weight:700;margin-bottom:16px;">🗺️ خارطة الطريق <span style="font-size:11px;color:var(--muted);font-weight:400;">Roadmap</span></h3>
+      <div class="timeline-line">
+        <div class="timeline-dot" style="background:#059669;color:white;">✓</div>
+        <div style="font-size:13px;font-weight:700;">مراجعة الأساسيات (B1)</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px;">Tenses · Subject-Verb Agreement</div>
+      </div>
+      <div class="timeline-line">
+        <div class="timeline-dot" style="background:var(--indigo);color:white;animation:pulse 2s infinite;">2</div>
+        <div style="font-size:13px;font-weight:700;">الربط والتحليل (B1+)</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px;">Academic Connectors · Transition Words</div>
+        <div style="margin-top:8px;">
+          <div class="progress-bar"><div class="progress-fill" id="home-bar" style="width:0%"></div></div>
+          <div style="font-size:10px;color:var(--muted);margin-top:4px;" id="home-progress-text">0% مكتمل</div>
+        </div>
+      </div>
+      <div class="timeline-line" style="opacity:0.45;">
+        <div class="timeline-dot" style="background:#e2e8f0;color:var(--muted);">3</div>
+        <div style="font-size:13px;font-weight:700;">الكتابة البحثية (B2)</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px;">Passive Voice · Formal Reports</div>
+      </div>
+      <div style="opacity:0.3;padding-right:32px;">
+        <div style="font-size:13px;font-weight:700;">الإتقان الأكاديمي (B2+)</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px;">Research Papers · Presentations</div>
+      </div>
+    </div>
+
+    <div class="card" style="padding:22px;">
+      <h3 style="font-size:15px;font-weight:700;margin-bottom:16px;">⚡ وصول سريع <span style="font-size:11px;color:var(--muted);font-weight:400;">Quick Access</span></h3>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="quick-btn" onclick="showPage('lessons-b1')"><span>📘</span><span>دروس B1 — الأساسيات</span></div>
+        <div class="quick-btn" onclick="showPage('lessons-b2')"><span>📗</span><span>دروس B2 — المتقدم</span></div>
+        <div class="quick-btn" onclick="showPage('vocab')"><span>🔤</span><span>بطاقات المفردات</span></div>
+        <div class="quick-btn" onclick="showPage('quiz')"><span>✏️</span><span>ابدأ اختباراً الآن</span></div>
+        <div class="quick-btn" onclick="showPage('writing')"><span>✍️</span><span>أدوات الكتابة البحثية</span></div>
+        <div class="quick-btn" onclick="showPage('notes')"><span>📝</span><span>مفكرتي الشخصية</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,#fef9ec,#fef3c7);border:1px solid #fcd34d;border-radius:16px;padding:16px 20px;">
+    <div style="font-size:12px;font-weight:800;color:var(--gold);margin-bottom:4px;">💡 نصيحة اليوم</div>
+    <div style="font-size:13px;color:var(--slate);line-height:1.8;">تجنبي كتابة <code style="font-family:'JetBrains Mono',monospace;background:rgba(0,0,0,0.07);padding:1px 5px;border-radius:4px;">"I think"</code> في الكتابة الأكاديمية. استبدليها بـ <code style="font-family:'JetBrains Mono',monospace;background:rgba(0,0,0,0.07);padding:1px 5px;border-radius:4px;">"It is argued that..."</code> أو <code style="font-family:'JetBrains Mono',monospace;background:rgba(0,0,0,0.07);padding:1px 5px;border-radius:4px;">"Evidence suggests that..."</code></div>
+  </div>
+</div>
+
+<!-- B1 LESSONS PAGE -->
+<div id="page-lessons-b1" class="page">
+  <div class="section-header">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div class="section-title">📘 دروس المستوى B1</div>
+        <div class="section-sub">الأساسيات لتحسين لغتك الأكاديمية</div>
+      </div>
+      <div class="card" style="padding:10px 16px;text-align:center;">
+        <div style="font-size:20px;font-weight:900;color:var(--indigo);" id="b1-done-count">0/6</div>
+        <div class="text-xs text-muted">مكتمل</div>
+      </div>
+    </div>
+    <div class="progress-bar mt-3"><div class="progress-fill" id="b1-bar" style="width:0%"></div></div>
+  </div>
+  <div class="lessons-grid" id="b1-lessons-grid"></div>
+</div>
+
+<!-- B2 LESSONS PAGE -->
+<div id="page-lessons-b2" class="page">
+  <div class="section-header">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div class="section-title">📗 دروس المستوى B2</div>
+        <div class="section-sub">الكتابة الأكاديمية المتقدمة والمصطلحات البحثية</div>
+      </div>
+      <div class="card" style="padding:10px 16px;text-align:center;">
+        <div style="font-size:20px;font-weight:900;color:var(--teal);" id="b2-done-count">0/6</div>
+        <div class="text-xs text-muted">مكتمل</div>
+      </div>
+    </div>
+    <div class="progress-bar mt-3"><div class="progress-fill" id="b2-bar" style="width:0%;background:linear-gradient(90deg,var(--teal),#2dd4bf)"></div></div>
+  </div>
+  <div class="lessons-grid" id="b2-lessons-grid"></div>
+</div>
+
+<!-- VOCAB PAGE -->
+<div id="page-vocab" class="page">
+  <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
+    <div>
+      <div class="section-title">🔤 بطاقات المفردات <span style="font-size:14px;font-weight:400;color:var(--muted);">Vocabulary Flashcards</span></div>
+      <div class="section-sub">اضغط على البطاقة لرؤية المعنى بالعربية</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;" id="vocab-filters">
+      <button class="vocab-filter-btn active" onclick="filterVocab('all',this)">الكل</button>
+      <button class="vocab-filter-btn" onclick="filterVocab('connectors',this)">روابط</button>
+      <button class="vocab-filter-btn" onclick="filterVocab('formal',this)">رسمية</button>
+      <button class="vocab-filter-btn" onclick="filterVocab('verbs',this)">أفعال</button>
+    </div>
+  </div>
+  <div class="vocab-grid" id="vocab-grid"></div>
+</div>
+
+<!-- QUIZ PAGE -->
+<div id="page-quiz" class="page">
+  <div class="section-header">
+    <div class="section-title">✏️ الاختبار التفاعلي <span style="font-size:14px;font-weight:400;color:var(--muted);">Interactive Quiz</span></div>
+    <div class="section-sub">اختر الاختبار المناسب لمستواك</div>
+  </div>
+  <div id="quiz-selector" class="quiz-selector-grid">
+    <div class="quiz-type-card" onclick="startQuiz('general')">
+      <div style="font-size:36px;margin-bottom:10px;">📚</div>
+      <h4 style="font-weight:700;margin-bottom:6px;">اختبار عام</h4>
+      <div style="font-size:12px;color:var(--muted);direction:ltr;font-family:'JetBrains Mono',monospace;margin-bottom:12px;">General Quiz · 8 questions</div>
+      <span class="badge badge-b1">B1 Level</span>
+    </div>
+    <div class="quiz-type-card" onclick="startQuiz('connectors')">
+      <div style="font-size:36px;margin-bottom:10px;">🔗</div>
+      <h4 style="font-weight:700;margin-bottom:6px;">اختبار أدوات الربط</h4>
+      <div style="font-size:12px;color:var(--muted);direction:ltr;font-family:'JetBrains Mono',monospace;margin-bottom:12px;">Connectors Quiz · 5 questions</div>
+      <span class="badge badge-b1">B1 Level</span>
+    </div>
+    <div class="quiz-type-card" onclick="startQuiz('formal')">
+      <div style="font-size:36px;margin-bottom:10px;">📜</div>
+      <h4 style="font-weight:700;margin-bottom:6px;">اختبار الأسلوب الرسمي</h4>
+      <div style="font-size:12px;color:var(--muted);direction:ltr;font-family:'JetBrains Mono',monospace;margin-bottom:12px;">Formal Register Quiz · 5 questions</div>
+      <span class="badge badge-b2">B2 Level</span>
+    </div>
+  </div>
+  <div id="quiz-container" style="display:none;">
+    <div class="quiz-container">
+      <div class="card" style="padding:28px;">
+        <div style="margin-bottom:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <span class="text-xs text-muted font-bold" id="quiz-progress-label">السؤال 1 من 8</span>
+            <span class="text-xs font-bold" style="color:var(--indigo);" id="quiz-score-label">النقاط: 0</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="quiz-bar" style="width:12.5%"></div></div>
+        </div>
+        <div id="quiz-body"></div>
+      </div>
+      <button onclick="backToQuizSelector()" style="margin-top:12px;background:none;border:none;color:var(--muted);font-size:13px;cursor:pointer;font-family:'Tajawal',sans-serif;">← العودة لقائمة الاختبارات</button>
+    </div>
+  </div>
+</div>
+
+<!-- WRITING PAGE -->
+<div id="page-writing" class="page">
+  <div class="section-header">
+    <div class="section-title">✍️ أدوات الكتابة الأكاديمية</div>
+    <div class="section-sub">عبارات جاهزة وقوالب للأبحاث الأكاديمية</div>
+  </div>
+  <div class="writing-templates">
+    <div class="template-card">
+      <div class="template-title">📌 المقدمة — Introduction</div>
+      <div class="template-sub">ابدأي مقالك بإحدى هذه العبارات الاحترافية</div>
+      <div class="phrase-list" id="writing-intro"></div>
+    </div>
+    <div class="template-card">
+      <div class="template-title">🔗 الربط — Linking Ideas</div>
+      <div class="template-sub">اربطي أفكارك بسلاسة وأناقة</div>
+      <div class="phrase-list" id="writing-linking"></div>
+    </div>
+    <div class="template-card">
+      <div class="template-title">📊 الاستنتاج — Conclusion</div>
+      <div class="template-sub">أنهي مقالك بقوة وإقناع</div>
+      <div class="phrase-list" id="writing-conclusion"></div>
+    </div>
+    <div class="template-card">
+      <div class="template-title">📑 قالب الملخص البحثي — Abstract Template</div>
+      <div class="template-sub">بنية Abstract المثالي في 4 أجزاء متكاملة</div>
+      <div id="abstract-template" style="display:flex;flex-direction:column;gap:8px;"></div>
+    </div>
+    <div class="template-card">
+      <div class="template-title">🚀 عبارات البداية — Sentence Starters</div>
+      <div class="template-sub">عبارات موزّعة حسب وظيفتها في البحث</div>
+      <div id="starters-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;"></div>
+    </div>
+    <div class="template-card">
+      <div class="template-title">⚠️ كلمات تجنبيها في الكتابة الرسمية</div>
+      <div class="template-sub">هذه الكلمات تضعف أسلوبك الأكاديمي</div>
+      <div class="phrase-list" id="writing-avoid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TIPS PAGE -->
+<div id="page-tips" class="page">
+  <div class="section-header">
+    <div class="section-title">💡 نصائح للنجاح</div>
+    <div class="section-sub">استراتيجيات مجرّبة لتحسين إنجليزيتك الأكاديمية</div>
+  </div>
+  <div class="tips-grid" id="tips-grid"></div>
+</div>
+
+<!-- NOTES PAGE -->
+<div id="page-notes" class="page">
+  <div class="section-header">
+    <div class="section-title">📝 مفكرتي الشخصية</div>
+    <div class="section-sub">دوّني ملاحظاتك وأفكارك هنا — تُحفظ تلقائياً</div>
+  </div>
+  <div class="two-col" style="margin-bottom:20px;">
+    <div class="card" style="padding:24px;">
+      <h3 style="font-size:15px;font-weight:700;margin-bottom:14px;">✏️ ملاحظة جديدة</h3>
+      <textarea class="notes-area" id="notes-input" placeholder="اكتبي ملاحظتك هنا... كلمات جديدة، جمل أعجبتك، أسئلة للدرس القادم..."></textarea>
+      <div style="display:flex;gap:8px;">
+        <button class="save-btn" onclick="saveNote()">💾 حفظ</button>
+        <button class="save-btn" style="background:var(--cream);color:var(--slate);" onclick="document.getElementById('notes-input').value=''">🗑 مسح</button>
+      </div>
+    </div>
+    <div class="card" style="padding:24px;">
+      <h3 style="font-size:15px;font-weight:700;margin-bottom:14px;">✅ قائمة التحضير اليومي</h3>
+      <div id="checklist" style="display:flex;flex-direction:column;gap:4px;"></div>
+    </div>
+  </div>
+  <div>
+    <h3 class="font-bold mb-3" style="font-size:15px;">📋 ملاحظاتي المحفوظة</h3>
+    <div id="notes-list"></div>
+  </div>
+</div>
+
+</main>
+
+<!-- LESSON MODAL -->
+<div class="modal-overlay" id="lesson-modal" onclick="if(event.target===this)closeLessonModal()">
+  <div class="modal" id="lesson-modal-content">
+    <div id="lesson-modal-body"></div>
+  </div>
+</div>
+
+<script>
+// ==================== PWA INSTALL PROMPT ====================
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBtn').classList.add('show');
+});
+document.getElementById('installBtn').addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') console.log('PWA installed');
+    deferredPrompt = null;
+    document.getElementById('installBtn').classList.remove('show');
+  }
+});
+
+// ==================== PERSISTENCE ====================
+let completedLessons = JSON.parse(localStorage.getItem('completedLessons') || '[]');
+let notes = JSON.parse(localStorage.getItem('notes') || '[]');
+
+// ==================== NAVIGATION ====================
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById('page-' + id);
+  if (page) page.classList.add('active');
+  const pills = document.querySelectorAll('.nav-pill');
+  pills.forEach(p => { if (p.onclick && p.onclick.toString().includes("'"+id+"'")) p.classList.add('active'); });
+  if (id === 'lessons-b1') renderLessons();
+  if (id === 'lessons-b2') renderLessons();
+  if (id === 'vocab') renderVocab('all');
+  if (id === 'writing') renderWritingPage();
+  if (id === 'tips') renderTips();
+  if (id === 'notes') { renderNotesList(); renderChecklist(); }
+  if (id === 'quiz') { document.getElementById('quiz-selector').style.display='grid'; document.getElementById('quiz-container').style.display='none'; }
+}
+
+// ==================== LESSONS DATA ====================
+const b1Lessons = [
+  { id:0, level:'b1', emoji:'🔗', title:'روابط الجمل الاحترافية', en:'Linking Words & Connectors', duration:'25 دقيقة', category:'📚 القواعد',
+    description:'تعلمي كيفية ربط الأفكار بشكل احترافي باستخدام الروابط المناسبة لكل سياق.',
+    content:[
+      { subtitle:'روابط الإضافة (Addition)', items:[
+        {en:'Furthermore, / Moreover,', ar:'علاوة على ذلك'},
+        {en:'In addition to this,', ar:'بالإضافة إلى ذلك'},
+        {en:'Not only... but also...', ar:'ليس فقط... بل أيضاً...'},
+      ]},
+      { subtitle:'روابط التعارض (Contrast)', items:[
+        {en:'Nevertheless, / Nonetheless,', ar:'بيد أن / ومع ذلك'},
+        {en:'On the contrary,', ar:'على النقيض من ذلك'},
+        {en:'Although / Even though', ar:'على الرغم من / رغم أن'},
+      ]},
+      { subtitle:'روابط النتيجة (Result)', items:[
+        {en:'Consequently, / Therefore,', ar:'وبالتالي / لذلك'},
+        {en:'As a result of this,', ar:'ونتيجةً لذلك'},
+        {en:'This leads to...', ar:'وهذا يؤدي إلى...'},
+      ]},
+    ],
+    tip:'في الكتابة الرسمية، ضعي فاصلة (comma) دائماً بعد الرابط في بداية الجملة.'
+  },
+  { id:1, level:'b1', emoji:'⏰', title:'أزمنة المضي للتعبير الأكاديمي', en:'Past Tenses in Academic Context', duration:'30 دقيقة', category:'📚 القواعد',
+    description:'استخدام Past Simple وPast Perfect في الكتابة البحثية لوصف الدراسات السابقة.',
+    content:[
+      { subtitle:'Past Simple — للأحداث المكتملة', items:[
+        {en:'Smith (2019) argued that...', ar:'استدل سميث (2019) بأن...'},
+        {en:'The study revealed significant...', ar:'كشفت الدراسة عن نتائج هامة...'},
+        {en:'Researchers found that...', ar:'وجد الباحثون أن...'},
+      ]},
+      { subtitle:'Past Perfect — للتسلسل الزمني', items:[
+        {en:'By 2010, scholars had already...', ar:'بحلول عام 2010، كان العلماء قد...'},
+        {en:'The data had been collected before...', ar:'كانت البيانات قد جُمعت قبل...'},
+      ]},
+    ],
+    tip:'عند الاستشهاد بمصادر، استخدمي Past Simple مع اسم المؤلف وتاريخ النشر.'
+  },
+  { id:2, level:'b1', emoji:'🔄', title:'المبني للمجهول في البحث', en:'Passive Voice in Academic Writing', duration:'30 دقيقة', category:'📚 القواعد',
+    description:'المبني للمجهول أداة أساسية في الكتابة العلمية لإبراز النتائج لا الباحث.',
+    content:[
+      { subtitle:'البنية الأساسية', items:[
+        {en:'The data were collected in...', ar:'جُمعت البيانات في...'},
+        {en:'The results were analyzed using...', ar:'حُللت النتائج باستخدام...'},
+        {en:'It has been suggested that...', ar:'تمت الإشارة إلى أن...'},
+      ]},
+    ],
+    tip:'استخدمي المبني للمجهول في قسمَي المنهجية والنتائج. لاحظي: "data were" وليس "data was"!'
+  },
+  { id:3, level:'b1', emoji:'🗣', title:'الإبلاغ الغير مباشر', en:'Reported Speech in Research', duration:'20 دقيقة', category:'📚 القواعد',
+    description:'كيفية نقل أفكار الباحثين الآخرين بدون اقتباس مباشر.',
+    content:[
+      { subtitle:'أفعال الإبلاغ الشائعة', items:[
+        {en:'argues / contends / maintains that', ar:'يجادل / يؤكد / يرى أن'},
+        {en:'suggests / proposes / recommends', ar:'يقترح / يوصي'},
+        {en:'demonstrates / illustrates / reveals', ar:'يُظهر / يوضح / يكشف'},
+      ]},
+      { subtitle:'بناء الجمل', items:[
+        {en:'Brown (2020) suggests that education...', ar:'يقترح براون (2020) أن التعليم...'},
+        {en:'According to Jones, the findings...', ar:'وفقاً لجونز، فإن النتائج...'},
+      ]},
+    ],
+    tip:'تنوعي بين أفعال الإبلاغ؛ لا تكرري "says" أو "writes" في النص الأكاديمي.'
+  },
+  { id:4, level:'b1', emoji:'📐', title:'بنية الفقرة الأكاديمية', en:'Academic Paragraph Structure (PEEL)', duration:'35 دقيقة', category:'📝 الكتابة',
+    description:'بناء فقرات منطقية ومتماسكة باستخدام نموذج PEEL.',
+    content:[
+      { subtitle:'نموذج PEEL للفقرة', items:[
+        {en:'P — Point: State your main idea clearly.', ar:'النقطة: اطرحي فكرتك الرئيسية بوضوح'},
+        {en:'E — Evidence: Support with data/quotes.', ar:'الدليل: ادعميها بأدلة أو إحصاءات'},
+        {en:'E — Explain: Analyze the evidence.', ar:'التفسير: حللي الدليل وأوضحي صلته'},
+        {en:'L — Link: Connect to the essay question.', ar:'الربط: اربطيها بسؤال المقال'},
+      ]},
+    ],
+    tip:'الفقرة الأكاديمية المثالية تتراوح بين 150–250 كلمة وتناقش فكرة واحدة فقط.'
+  },
+  { id:5, level:'b1', emoji:'❓', title:'جمل الشرط الأكاديمية', en:'Conditional Sentences in Research', duration:'25 دقيقة', category:'📚 القواعد',
+    description:'استخدام جمل الشرط للتعبير عن الفرضيات والتوصيات البحثية.',
+    content:[
+      { subtitle:'الشرط الأول — للتوصيات', items:[
+        {en:'If the sample size increases, results will...', ar:'إذا زاد حجم العينة، ستكون النتائج...'},
+        {en:'If this approach is adopted, it could...', ar:'إذا اعتُمد هذا النهج، يمكن أن...'},
+      ]},
+      { subtitle:'الشرط الثاني — للافتراضات', items:[
+        {en:'If the hypothesis were correct, we would...', ar:'لو كانت الفرضية صحيحة، لكنا...'},
+        {en:'Were the data available, analysis would...', ar:'لو كانت البيانات متاحة، لكان التحليل...'},
+      ]},
+    ],
+    tip:'في الكتابة الأكاديمية المتقدمة، يمكن حذف "if" واستبدالها بترتيب عكسي: "Were this true..."'
+  },
+];
+
+const b2Lessons = [
+  { id:10, level:'b2', emoji:'🔬', title:'المصطلحات البحثية المتقدمة', en:'Advanced Research Terminology', duration:'40 دقيقة', category:'📚 المفردات',
+    description:'المصطلحات الأساسية في الكتابة البحثية على مستوى الدراسات العليا.',
+    content:[
+      { subtitle:'مصطلحات المنهجية', items:[
+        {en:'qualitative / quantitative methodology', ar:'المنهج النوعي / الكمي'},
+        {en:'triangulation of data sources', ar:'تثليث مصادر البيانات'},
+        {en:'empirical evidence / theoretical framework', ar:'الأدلة التجريبية / الإطار النظري'},
+      ]},
+      { subtitle:'مصطلحات النتائج', items:[
+        {en:'statistically significant correlation', ar:'ارتباط ذو دلالة إحصائية'},
+        {en:'the findings corroborate the hypothesis', ar:'النتائج تؤيد الفرضية'},
+        {en:'inconclusive results / limitations', ar:'نتائج غير حاسمة / حدود الدراسة'},
+      ]},
+    ],
+    tip:'في الكتابة على مستوى B2+، تجنبي المصطلحات الغامضة واستعيضي عنها بالدقيقة والمحددة.'
+  },
+  { id:11, level:'b2', emoji:'📊', title:'وصف الرسوم البيانية والإحصاء', en:'Describing Charts & Statistics', duration:'35 دقيقة', category:'📝 الكتابة',
+    description:'كيفية وصف البيانات الإحصائية والرسوم البيانية بدقة واحترافية.',
+    content:[
+      { subtitle:'الاتجاهات الصاعدة والهابطة', items:[
+        {en:'There was a marked increase in...', ar:'كان هناك ارتفاع ملحوظ في...'},
+        {en:'The figures declined sharply by...', ar:'انخفضت الأرقام بشكل حاد بنسبة...'},
+        {en:'The data fluctuated considerably', ar:'تذبذبت البيانات بشكل ملحوظ'},
+      ]},
+      { subtitle:'المقارنة بين الأرقام', items:[
+        {en:'X accounted for approximately 40% of...', ar:'مثّل X ما يقارب 40% من...'},
+        {en:'In contrast to..., the rate of Y was...', ar:'على خلاف...، كان معدل Y...'},
+      ]},
+    ],
+    tip:'استعملي ظروف الدرجة مع الأفعال: slightly / moderately / significantly / dramatically.'
+  },
+  { id:12, level:'b2', emoji:'⚖️', title:'الحجة الأكاديمية المتوازنة', en:'Balanced Academic Argumentation', duration:'45 دقيقة', category:'📝 الكتابة',
+    description:'بناء حجج مقنعة ومتوازنة تراعي الآراء المخالفة وتفندها.',
+    content:[
+      { subtitle:'تقديم الحجة المضادة (Counter-argument)', items:[
+        {en:'Critics, however, argue that...', ar:'غير أن المنتقدين يرون أن...'},
+        {en:'While this view has merit, it overlooks...', ar:'رغم وجاهة هذا الرأي، إلا أنه يغفل...'},
+        {en:'One could object that... ; however,...', ar:'يمكن الاعتراض بأن... ; غير أن...'},
+      ]},
+      { subtitle:'تعزيز موقفك (Strengthening)', items:[
+        {en:'The preponderance of evidence suggests...', ar:'الغالبية العظمى من الأدلة تشير إلى...'},
+        {en:'Taken together, these findings indicate...', ar:'مجتمعةً، تُشير هذه النتائج إلى...'},
+      ]},
+    ],
+    tip:'المقال الأكاديمي القوي يعترف بالحجة المعاكسة ثم يفندها — لا يتجاهلها.'
+  },
+  { id:13, level:'b2', emoji:'✏️', title:'الأسلوب الرسمي والأكاديمي', en:'Formal & Academic Register', duration:'30 دقيقة', category:'📝 الكتابة',
+    description:'الفرق بين اللغة غير الرسمية والأكاديمية مع تمارين للتحويل.',
+    content:[
+      { subtitle:'من غير رسمي إلى أكاديمي', items:[
+        {en:'a lot of → a considerable number of', ar:'الكثير من → عدد كبير من'},
+        {en:'show → demonstrate / indicate / reveal', ar:'يُظهر → يُثبت / يُشير / يكشف'},
+        {en:'because → due to / owing to / as a result of', ar:'بسبب → نتيجةً لـ / بسبب / إثر'},
+        {en:'but → however / nevertheless / yet', ar:'لكن → غير أن / ومع ذلك / بيد أن'},
+      ]},
+    ],
+    tip:'في الأسلوب الأكاديمي، تجنبي الاختصارات (don\'t → do not) والضمائر الشخصية (I, we).'
+  },
+  { id:14, level:'b2', emoji:'📖', title:'التوثيق والاستشهاد بالمصادر', en:'Citation & Referencing (APA/MLA)', duration:'40 دقيقة', category:'🔬 البحث',
+    description:'أنظمة التوثيق العلمي APA وMLA وكيفية توظيفها في الكتابة الأكاديمية.',
+    content:[
+      { subtitle:'نظام APA — داخل النص', items:[
+        {en:'(Author, Year) → (Smith, 2021)', ar:'(المؤلف، السنة)'},
+        {en:'Author (Year) found that...', ar:'وجد المؤلف (السنة) أن...'},
+        {en:'As stated by X (Year, p. 45),...', ar:'كما أشار X (السنة، ص45)...'},
+      ]},
+      { subtitle:'قائمة المراجع — APA', items:[
+        {en:'Author, A. A. (Year). Title. Publisher.', ar:'الكتاب: المؤلف. (السنة). العنوان. الناشر.'},
+        {en:'Author, A. (Year). Article. Journal, Vol(Is), pp.', ar:'المقال: المؤلف. (السنة). العنوان. المجلة.'},
+      ]},
+    ],
+    tip:'استخدمي أداة Zotero أو Mendeley لإدارة مصادرك تلقائياً وتوفير الوقت.'
+  },
+  { id:15, level:'b2', emoji:'🏁', title:'استراتيجيات كتابة البحث الكامل', en:'Full Research Paper Strategies', duration:'50 دقيقة', category:'📝 الكتابة',
+    description:'من الفكرة إلى الإصدار النهائي: بناء البحث الأكاديمي المتقن.',
+    content:[
+      { subtitle:'مراحل كتابة البحث', items:[
+        {en:'1. Brainstorm → Mind-map ideas freely', ar:'العصف الذهني → ارسمي خريطة ذهنية'},
+        {en:'2. Outline → Logical structure first', ar:'الهيكل → البنية المنطقية أولاً'},
+        {en:'3. Draft → Focus on content, not perfection', ar:'المسودة → التركيز على المحتوى'},
+        {en:'4. Revise → Coherence, evidence, argument', ar:'المراجعة → التماسك والأدلة والحجج'},
+        {en:'5. Edit → Grammar, style, citations', ar:'التحرير → القواعد والأسلوب والتوثيق'},
+      ]},
+    ],
+    tip:'اقرئي بحثك بصوت عالٍ قبل التسليم — ستكتشفين الأخطاء والجمل المتعثرة بسهولة.'
+  },
+];
+
+// ==================== VOCAB DATA ====================
+const vocabWords = [
+  { en:'Furthermore', ar:'علاوة على ذلك', usage:'Furthermore, the data shows...', cat:'connectors' },
+  { en:'Nevertheless', ar:'ومع ذلك / بيد أن', usage:'Nevertheless, it remains...', cat:'connectors' },
+  { en:'Consequently', ar:'وبالتالي / لذلك', usage:'Consequently, the results...', cat:'connectors' },
+  { en:'Moreover', ar:'فضلاً عن ذلك', usage:'Moreover, the evidence...', cat:'connectors' },
+  { en:'Nonetheless', ar:'رغم ذلك', usage:'Nonetheless, the study...', cat:'connectors' },
+  { en:'Empirical', ar:'تجريبي / مبني على الملاحظة', usage:'Empirical evidence suggests...', cat:'formal' },
+  { en:'Methodology', ar:'المنهجية / الأسلوب البحثي', usage:'The methodology adopted...', cat:'formal' },
+  { en:'Significant', ar:'ذو أهمية / ملحوظ', usage:'A significant increase in...', cat:'formal' },
+  { en:'Paradigm', ar:'نموذج / إطار فكري', usage:'A paradigm shift occurred...', cat:'formal' },
+  { en:'Coherence', ar:'الترابط / التماسك', usage:'Ensures textual coherence...', cat:'formal' },
+  { en:'Elaborate', ar:'يوضّح / يتوسع', usage:'The author elaborates on...', cat:'verbs' },
+  { en:'Corroborate', ar:'يؤيد / يعزز', usage:'These findings corroborate...', cat:'verbs' },
+  { en:'Substantiate', ar:'يدعم بأدلة / يُثبت', usage:'Evidence to substantiate...', cat:'verbs' },
+  { en:'Elucidate', ar:'يشرح / يوضّح بالتفصيل', usage:'To elucidate this point...', cat:'verbs' },
+  { en:'Demonstrate', ar:'يُثبت / يُبيّن', usage:'The results demonstrate...', cat:'verbs' },
+  { en:'Ambiguous', ar:'غامض / متعدد التأويلات', usage:'The term remains ambiguous...', cat:'formal' },
+  { en:'Discrepancy', ar:'تناقض / تفاوت', usage:'A discrepancy between...', cat:'formal' },
+  { en:'Tentative', ar:'أولي / غير قاطع', usage:'A tentative conclusion...', cat:'formal' },
+  { en:'Hypothesis', ar:'الفرضية', usage:'The hypothesis was tested...', cat:'formal' },
+  { en:'Triangulation', ar:'تثليث المصادر', usage:'Data triangulation ensures...', cat:'formal' },
+];
+
+// ==================== QUIZ DATA ====================
+const quizData = {
+  general: [
+    { q:'ما المعنى الصحيح لكلمة "Furthermore"؟', en:'Furthermore, the data reveals a significant correlation.', options:['على النقيض من ذلك','علاوة على ذلك','ومع ذلك','نتيجةً لذلك'], correct:1, explanation:'"Furthermore" تستخدم لإضافة نقطة تدعم ما قيل. البديل: Moreover, In addition.' },
+    { q:'اختاري الجملة الأكاديمية الصحيحة:', en:null, options:['The research shows a lot of problems.','The research reveals considerable challenges.','The research got many problems.','There are many problems in the research.'], correct:1, explanation:'"reveals considerable challenges" أكثر دقة وأكاديمية من "shows a lot of".' },
+    { q:'ما معنى "Empirical evidence"؟', en:'The claim is supported by empirical evidence.', options:['الأدلة النظرية','الأدلة التجريبية المبنية على الملاحظة','الأدلة القديمة','الأدلة الوثائقية فقط'], correct:1, explanation:'"Empirical" يعني مبني على التجربة والملاحظة المباشرة لا على النظرية.' },
+    { q:'ما الفعل الأكاديمي الأنسب بدلاً من "says"؟', en:'Brown (2021) ___ that the findings are inconclusive.', options:['says','tells','argues','talks'], correct:2, explanation:'"argues" فعل إبلاغ أكاديمي مناسب. أيضاً: suggests, contends, asserts, maintains.' },
+    { q:'ما معنى "The hypothesis was corroborated"؟', en:'The findings corroborated the initial hypothesis.', options:['رُفضت الفرضية','أُيدت وعُززت الفرضية','عُدّلت الفرضية','نُقضت الفرضية'], correct:1, explanation:'"Corroborate" تعني تأييد وتعزيز ادعاء بأدلة إضافية.' },
+    { q:'أي عبارة تُستخدم لتقديم استنتاج بحثي؟', en:null, options:['In my opinion, I think that...','Taken together, these findings suggest that...','To be honest, the results show...','As everyone knows, this proves...'], correct:1, explanation:'"Taken together, these findings suggest that..." عبارة موضوعية واحترافية.' },
+    { q:'كيف تحولين "because" إلى أسلوب أكاديمي؟', en:'The project failed ___ poor planning.', options:['because of','due to','owing to','as a result of'], correct:3, explanation:'جميع البدائل صحيحة أكاديمياً، لكن "as a result of" الأكثر رسمية هنا.' },
+    { q:'ما الأسلوب الأكاديمي لـ "a lot of"؟', en:'There were ___ studies on this topic.', options:['a lot of','many many','a considerable number of','much'], correct:2, explanation:'"a considerable number of" أسلوب أكاديمي. أيضاً: numerous, a substantial number of.' },
+  ],
+  connectors: [
+    { q:'أي رابط يستخدم للتعارض في الكتابة الرسمية؟', en:'The sample was large. ___, the results were inconsistent.', options:['Furthermore','Consequently','Nevertheless','Similarly'], correct:2, explanation:'"Nevertheless" يعني "ومع ذلك" ويُستخدم لإدخال فكرة معارضة.' },
+    { q:'اختاري الرابط المناسب للنتيجة:', en:'The temperature increased. ___, the reaction accelerated.', options:['However','Nevertheless','Consequently','Although'], correct:2, explanation:'"Consequently" يعني "وبالتالي" ويُستخدم للنتيجة. مثله: Therefore, Thus, Hence.' },
+    { q:'أي رابط يُستخدم للإضافة؟', en:'The study had a large sample. ___, the methodology was rigorous.', options:['Nevertheless','Furthermore','However','Despite'], correct:1, explanation:'"Furthermore" يعني "علاوة على ذلك". مثله: Moreover, In addition, Additionally.' },
+    { q:'أكملي الجملة بالرابط الصحيح:', en:'___ the limitations, the study provides valuable insights.', options:['However','Despite','Nevertheless','Consequently'], correct:1, explanation:'"Despite" يُستخدم قبل اسم أو عبارة اسمية. "Although/Even though" يُستخدم قبل جملة.' },
+    { q:'ما الفرق الصحيح بين "although" و "despite"؟', en:null, options:['لا فرق بينهما','although يأتي قبل جملة، despite قبل اسم/عبارة','despite يأتي قبل جملة، although قبل اسم','كلاهما يأتيان قبل جملة فقط'], correct:1, explanation:'"Although the data was limited..." / "Despite the limited data..." كلاهما صحيح لكن البنية مختلفة.' },
+  ],
+  formal: [
+    { q:'ما البديل الأكاديمي لـ "I think"؟', en:'___ this approach is more effective.', options:['I think','It is argued that','I believe','In my view'], correct:1, explanation:'"It is argued that" أكثر موضوعية من "I think". أيضاً: "Evidence suggests that..." أو "It is proposed that..."' },
+    { q:'أي جملة تُستخدم في قسم المنهجية؟', en:null, options:['We collected data from students.','I asked 50 students.','Data were collected from 50 participants.','The students gave us information.'], correct:2, explanation:'قسم المنهجية يستخدم المبني للمجهول: "Data were collected" وليس "We collected". لاحظي "data were" وليس "data was"!' },
+    { q:'ما المصطلح الأكاديمي للإشارة لمشاركين في دراسة؟', en:'___ were randomly assigned to two groups.', options:['People','Guys','Participants','Subjects/Participants'], correct:3, explanation:'"Participants" أو "Subjects" هي المصطلحات الرسمية في البحث العلمي.' },
+    { q:'أكملي الجملة الرسمية بالبديل الصحيح:', en:'The findings ___ a clear correlation.', options:['show','indicate','got','tell us about'], correct:1, explanation:'"indicate" هو الفعل الأكاديمي الأنسب. أيضاً: demonstrate, reveal, suggest, illustrate.' },
+    { q:'كيف تكتبي الاستنتاج بأسلوب أكاديمي؟', en:null, options:['So, we can say that...','In conclusion, the findings demonstrate that...','To finish, I think...','At the end, it\'s clear that...'], correct:1, explanation:'"In conclusion, the findings demonstrate that..." عبارة رسمية مثالية لبدء خاتمة البحث.' },
+  ],
+};
+
+// ==================== WRITING PHRASES ====================
+const writingPhrases = {
+  intro: [
+    {en:'This paper aims to examine...', ar:'تهدف هذه الورقة إلى دراسة...'},
+    {en:'The primary objective of this study is...', ar:'الهدف الرئيسي من هذه الدراسة هو...'},
+    {en:'In recent decades, ... has attracted considerable attention.', ar:'في العقود الأخيرة، استقطب... اهتماماً واسعاً.'},
+    {en:'This essay will critically evaluate...', ar:'ستتناول هذه المقالة نقدياً...'},
+    {en:'This study aims to investigate...', ar:'تسعى هذه الدراسة إلى استقصاء...'},
+    {en:'Little research has hitherto examined...', ar:'ندرت الدراسات التي تناولت حتى الآن...'},
+  ],
+  linking: [
+    {en:'Furthermore, / Moreover,', ar:'علاوة على ذلك'},
+    {en:'Nevertheless, / Nonetheless,', ar:'بيد أن / ومع ذلك'},
+    {en:'Consequently, / Therefore,', ar:'وبالتالي / لذلك'},
+    {en:'In contrast to this, / Conversely,', ar:'على خلاف ذلك / والعكس صحيح'},
+    {en:'In particular, / Specifically,', ar:'وتحديداً / وبشكل خاص'},
+    {en:'In contrast to previous studies...', ar:'على خلاف الدراسات السابقة...'},
+  ],
+  conclusion: [
+    {en:'In conclusion, it has been demonstrated that...', ar:'خلاصة القول، ثبت أن...'},
+    {en:'Taken together, these findings suggest...', ar:'مجتمعةً، تُشير هذه النتائج إلى...'},
+    {en:'To sum up, the evidence strongly indicates...', ar:'باختصار، تُشير الأدلة بقوة إلى...'},
+    {en:'Further research is needed to establish...', ar:'تستلزم الدراسات المستقبلية تحديد...'},
+    {en:'In conclusion, this study has demonstrated...', ar:'في الختام، أثبتت هذه الدراسة...'},
+    {en:'Further research is warranted to explore...', ar:'تستدعي الدراسات المستقبلية استكشاف...'},
+  ],
+  avoid: [
+    {en:'very / really / a lot → significantly / considerably', ar:'تجنبي: very — استخدمي: significantly'},
+    {en:'get / got → obtain / receive / achieve', ar:'تجنبي: get — استخدمي: obtain/achieve'},
+    {en:'show → demonstrate / indicate / reveal', ar:'تجنبي: show — استخدمي: demonstrate'},
+    {en:'think → argue / contend / propose / suggest', ar:'تجنبي: think — استخدمي: argue/propose'},
+    {en:'because → due to / owing to / as a result of', ar:'تجنبي: because — استخدمي: due to'},
+    {en:'I / We → It is argued / Data were collected', ar:'تجنبي: I/We — استخدمي: المبني للمجهول'},
+  ],
+};
+
+// ==================== TIPS DATA ====================
+const tips = [
+  { emoji:'📌', title:'تجنبي "I think" في الأبحاث', en:'Avoid "I think"', body:'استبدلي "I think" بـ "It is argued that..." أو "It is suggested that..." للحصول على أسلوب أكاديمي يعكس الموضوعية.', level:'B1' },
+  { emoji:'⏱️', title:'Present Perfect في المراجعة', en:'Present Perfect for Literature', body:'استخدمي Present Perfect عند الإشارة للدراسات السابقة: "Several studies have demonstrated..." بدلاً من "Several studies demonstrated..."', level:'B1' },
+  { emoji:'🔄', title:'المبني للمجهول للموضوعية', en:'Passive = Objectivity', body:'استخدمي المبني للمجهول في قسم Methodology: "Data were collected..." بدلاً من "We collected data..." — لاحظي "data were" وليس "data was"!', level:'B2' },
+  { emoji:'📊', title:'"Data were" وليس "Data was"', en:'"Data" is always plural', body:'خطأ شائع جداً: كتابة "data was collected". الصحيح أكاديمياً: "data were collected" لأن "data" جمع كلمة "datum". هذا الخطأ يُلاحَظ فوراً من أي محكّم أكاديمي.', level:'B2' },
+  { emoji:'🔗', title:'تنوعي في أدوات الربط', en:'Vary Your Connectors', body:'لا تكرري نفس الرابط في الفقرة الواحدة. لديك: Therefore, Thus, Hence, Consequently — كلها تعني "لذلك". وللإضافة: Furthermore, Moreover, In addition, Additionally.', level:'B1' },
+  { emoji:'📑', title:'هيكل الفقرة الأكاديمية', en:'Paragraph Structure (PEEL)', body:'الفقرة الجيدة: Point (الفكرة) + Evidence (الدليل) + Explanation (الشرح) + Link (الربط بالتالي). هيكل PEEL يضمن تماسك الكتابة.', level:'B2' },
+  { emoji:'🔍', title:'تجنبي الكلمات المبهمة', en:'Avoid Vague Words', body:'تجنبي: very, really, big, a lot, things, stuff. استبدليها بكلمات دقيقة: significantly, substantial, crucial, data, findings.', level:'B1' },
+  { emoji:'⚠️', title:'الانتحال الأكاديمي (Plagiarism)', en:'Avoid Plagiarism', body:'لا تنسخي أي جملة من مصدر دون إعادة الصياغة (Paraphrasing) أو الاقتباس الصحيح. استخدمي Turnitin أو Grammarly للتحقق من نسبة الأصالة.', level:'B2' },
+  { emoji:'📖', title:'اقرئي 15 دقيقة يومياً', en:'Daily Reading Habit', body:'اقرئي ورقة بحثية أو مقالاً أكاديمياً لمدة 15 دقيقة يومياً. ستلاحظين تحسناً كبيراً في مفرداتك خلال أسبوعين!', level:'عام' },
+  { emoji:'✏️', title:'احتفظي بدفتر مفردات', en:'Vocabulary Notebook', body:'خصصي دفتراً لكتابة الكلمات الجديدة مع جملة مثال من نفس البحث الذي قرأته. السياق يساعد على الحفظ.', level:'عام' },
+  { emoji:'🎙️', title:'تحدثي بالإنجليزية مع نفسك', en:'Self-Talk Practice', body:'دقيقتان يومياً من التفكير بالإنجليزية يُحسّن الطلاقة بشكل لافت خلال شهر واحد.', level:'عام' },
+  { emoji:'🏆', title:'القراءة والكتابة بالتناوب', en:'Read & Write Alternately', body:'بعد قراءة كل فقرة في بحث، اكتبي جملة واحدة تلخصها بكلماتك الخاصة. هذا يطور مهارة Paraphrasing وهي أساس الكتابة البحثية.', level:'B2' },
+  { emoji:'💡', title:'استخدمي قواميس أكاديمية', en:'Use Academic Dictionaries', body:'موقع Merriam-Webster وقاموس Oxford Academic Vocabulary أفضل بكثير من Google Translate لفهم الكلمات في سياقها الأكاديمي.', level:'عام' },
+];
+
+// ==================== CHECKLIST ITEMS ====================
+const checkItems = ['مراجعة ملاحظات الحصة السابقة', 'حفظ 5 كلمات جديدة', 'إحضار الدفتر والقلم', 'قراءة فقرة أكاديمية', 'مراجعة أدوات الربط'];
+
+// ==================== RENDER LESSONS ====================
+function renderLessons() {
+  renderLevelLessons('b1', b1Lessons);
+  renderLevelLessons('b2', b2Lessons);
+  updateLessonProgress();
+}
+
+function renderLevelLessons(level, lessons) {
+  const grid = document.getElementById(level+'-lessons-grid');
+  if (!grid) return;
+  grid.innerHTML = lessons.map(l => {
+    const done = completedLessons.includes(l.id);
+    return `
+    <div class="lesson-card ${level} ${done?'done':''}" onclick="openLesson(${l.id})">
+      <div class="lesson-top">
+        <div class="lesson-emoji">${l.emoji}</div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+          <span class="badge badge-${level}">${level.toUpperCase()}</span>
+          ${done ? '<span class="badge" style="background:#d1fae5;color:#065f46;">✓ مكتمل</span>' : ''}
+        </div>
+      </div>
+      <div class="lesson-title">${l.title}</div>
+      <div class="lesson-en">${l.en}</div>
+      <div class="lesson-meta">
+        <span class="lesson-meta-item">⏱ ${l.duration}</span>
+        <span class="lesson-meta-item">${l.category}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function updateLessonProgress() {
+  const b1done = b1Lessons.filter(l => completedLessons.includes(l.id)).length;
+  const b2done = b2Lessons.filter(l => completedLessons.includes(l.id)).length;
+  const total = b1Lessons.length + b2Lessons.length;
+  const totalDone = b1done + b2done;
+
+  const b1bar = document.getElementById('b1-bar');
+  const b2bar = document.getElementById('b2-bar');
+  const b1count = document.getElementById('b1-done-count');
+  const b2count = document.getElementById('b2-done-count');
+  const homebar = document.getElementById('home-bar');
+  const hometxt = document.getElementById('home-progress-text');
+
+  if (b1bar) b1bar.style.width = (b1done/b1Lessons.length*100)+'%';
+  if (b2bar) b2bar.style.width = (b2done/b2Lessons.length*100)+'%';
+  if (b1count) b1count.textContent = b1done+'/'+b1Lessons.length;
+  if (b2count) b2count.textContent = b2done+'/'+b2Lessons.length;
+  if (homebar) homebar.style.width = (totalDone/total*100)+'%';
+  if (hometxt) hometxt.textContent = Math.round(totalDone/total*100)+'% مكتمل';
+}
+
+// ==================== OPEN LESSON MODAL ====================
+function openLesson(id) {
+  const lesson = [...b1Lessons, ...b2Lessons].find(l => l.id === id);
+  if (!lesson) return;
+  const done = completedLessons.includes(id);
+  const isB1 = lesson.level === 'b1';
+
+  document.getElementById('lesson-modal-body').innerHTML = `
+    <div class="lesson-detail-hero">
+      <div style="font-size:40px;margin-bottom:10px;">${lesson.emoji}</div>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
+        <span class="badge badge-${lesson.level}">${lesson.level.toUpperCase()}</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.5);">${lesson.category} · ${lesson.duration}</span>
+      </div>
+      <h2 style="font-size:22px;font-weight:900;margin-bottom:6px;">${lesson.title}</h2>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(165,180,252,0.8);direction:ltr;">${lesson.en}</div>
+      <p style="font-size:13px;color:rgba(255,255,255,0.7);margin-top:10px;line-height:1.7;">${lesson.description}</p>
+    </div>
+    <div class="lesson-detail-body">
+      ${lesson.content.map(section => `
+        <div class="grammar-box">
+          <h4>${section.subtitle}</h4>
+          ${section.items.map(item => `
+            <div class="example-box">
+              <div class="en-line">${item.en}</div>
+              <div class="ar-line">${item.ar}</div>
+            </div>
+          `).join('')}
+        </div>
+      `).join('')}
+      <div style="background:linear-gradient(135deg,#fef9ec,#fef3c7);border:1px solid #fcd34d;border-radius:12px;padding:14px 16px;margin-top:16px;">
+        <div style="font-size:11px;font-weight:800;color:var(--gold);margin-bottom:4px;">💡 نصيحة الدرس</div>
+        <div style="font-size:13px;line-height:1.7;">${lesson.tip}</div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;">
+        <button id="done-btn-${id}" onclick="markDone(${id})" style="background:${done?'#d1fae5':'var(--indigo)'};color:${done?'#065f46':'white'};border:none;padding:10px 22px;border-radius:50px;font-weight:800;font-size:13px;cursor:pointer;font-family:'Tajawal',sans-serif;">
+          ${done ? '✓ مكتمل' : '✅ وضعي علامة مكتمل'}
+        </button>
+        <button onclick="closeLessonModal()" style="background:var(--cream);color:var(--slate);border:none;padding:10px 22px;border-radius:50px;font-weight:700;font-size:13px;cursor:pointer;font-family:'Tajawal',sans-serif;">إغلاق</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('lesson-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function markDone(id) {
+  if (!completedLessons.includes(id)) {
+    completedLessons.push(id);
+    localStorage.setItem('completedLessons', JSON.stringify(completedLessons));
+  }
+  const btn = document.getElementById('done-btn-'+id);
+  if (btn) { btn.style.background='#d1fae5'; btn.style.color='#065f46'; btn.textContent='✓ مكتمل'; }
+  renderLessons();
+  updateLessonProgress();
+}
+
+function closeLessonModal() {
+  document.getElementById('lesson-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ==================== VOCAB ====================
+let currentVocabFilter = 'all';
+function renderVocab(filter) {
+  currentVocabFilter = filter;
+  const grid = document.getElementById('vocab-grid');
+  if (!grid) return;
+  const filtered = filter === 'all' ? vocabWords : vocabWords.filter(w => w.cat === filter);
+  grid.innerHTML = filtered.map(w => `
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <div class="flip-word">${w.en}</div>
+          <div class="flip-hint">اضغط للترجمة 👆</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-ar">${w.ar}</div>
+          <div class="flip-usage">${w.usage}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterVocab(filter, btn) {
+  document.querySelectorAll('.vocab-filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderVocab(filter);
+}
+
+// ==================== QUIZ ====================
+let quizState = { questions: [], current: 0, score: 0, answered: false };
+
+function startQuiz(type) {
+  quizState = { questions: quizData[type] || quizData.general, current: 0, score: 0, answered: false };
+  document.getElementById('quiz-selector').style.display = 'none';
+  document.getElementById('quiz-container').style.display = 'block';
+  renderQuizQuestion();
+}
+
+function backToQuizSelector() {
+  document.getElementById('quiz-selector').style.display = 'grid';
+  document.getElementById('quiz-container').style.display = 'none';
+}
+
+function renderQuizQuestion() {
+  const body = document.getElementById('quiz-body');
+  if (!body) return;
+  const { questions, current, score } = quizState;
+  const total = questions.length;
+  if (current >= total) { renderQuizResult(); return; }
+  const q = questions[current];
+  const pct = ((current+1)/total*100).toFixed(0);
+  document.getElementById('quiz-progress-label').textContent = `السؤال ${current+1} من ${total}`;
+  document.getElementById('quiz-score-label').textContent = `النقاط: ${score}`;
+  const bar = document.getElementById('quiz-bar');
+  if (bar) bar.style.width = pct+'%';
+  body.innerHTML = `
+    <div class="quiz-q-num">السؤال ${current+1} / ${total}</div>
+    <div class="quiz-question">${q.q}</div>
+    ${q.en ? `<div class="quiz-en">${q.en}</div>` : ''}
+    <div class="quiz-options">
+      ${q.options.map((opt,oi) => `
+        <div class="quiz-option" id="opt-${oi}" onclick="answerQuiz(${oi})">
+          <span class="option-letter">${String.fromCharCode(65+oi)}</span>
+          <span>${opt}</span>
+        </div>
+      `).join('')}
+    </div>
+    <div id="quiz-feedback" style="display:none;margin-top:16px;padding:14px 16px;border-radius:12px;font-size:13px;line-height:1.7;"></div>
+    <div id="quiz-next-wrap" style="display:none;margin-top:16px;">
+      <button onclick="nextQuestion()" style="background:var(--indigo);color:white;border:none;padding:10px 26px;border-radius:50px;font-weight:800;font-size:13px;cursor:pointer;font-family:'Tajawal',sans-serif;">
+        ${current+1 < total ? 'السؤال التالي ←' : 'عرض النتيجة 🎉'}
+      </button>
+    </div>
+  `;
+}
+
+function answerQuiz(chosen) {
+  if (quizState.answered) return;
+  quizState.answered = true;
+  const q = quizState.questions[quizState.current];
+  const correct = q.correct;
+  document.querySelectorAll('.quiz-option').forEach((el,i) => {
+    el.style.pointerEvents = 'none';
+    if (i === correct) el.classList.add('correct');
+    if (i === chosen && chosen !== correct) el.classList.add('wrong');
+  });
+  if (chosen === correct) quizState.score++;
+  const fb = document.getElementById('quiz-feedback');
+  fb.style.display = 'block';
+  fb.style.background = chosen === correct ? '#d1fae5' : '#fee2e2';
+  fb.style.color = chosen === correct ? '#065f46' : '#991b1b';
+  fb.innerHTML = (chosen === correct ? '✅ <strong>صحيح!</strong> ' : '❌ <strong>خطأ.</strong> ') + q.explanation;
+  document.getElementById('quiz-next-wrap').style.display = 'block';
+}
+
+function nextQuestion() {
+  quizState.current++;
+  quizState.answered = false;
+  renderQuizQuestion();
+}
+
+function renderQuizResult() {
+  const total = quizState.questions.length;
+  const score = quizState.score;
+  const pct = Math.round(score/total*100);
+  let grade, msg;
+  if (pct >= 88) { grade = '🏆 ممتاز!'; msg = 'مستوى رائع! أنتِ على الطريق الصحيح نحو B2.'; }
+  else if (pct >= 63) { grade = '👍 جيد جداً'; msg = 'نتيجة جيدة! راجعي الدروس التي أخطأتِ فيها.'; }
+  else { grade = '📚 تحتاجين مراجعة'; msg = 'لا بأس! راجعي الدروس والمفردات وأعيدي الاختبار.'; }
+  const bar = document.getElementById('quiz-bar');
+  if (bar) bar.style.width = '100%';
+  document.getElementById('quiz-body').innerHTML = `
+    <div class="quiz-result">
+      <div class="result-score">${score}/${total}</div>
+      <div class="result-label">${grade}</div>
+      <div class="result-sub">${msg}</div>
+      <div style="margin:20px 0;font-size:32px;">${pct>=88?'🌟🌟🌟':pct>=63?'⭐⭐':'⭐'}</div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button onclick="startQuiz('general')" style="background:var(--indigo);color:white;border:none;padding:10px 24px;border-radius:50px;font-weight:800;cursor:pointer;font-family:'Tajawal',sans-serif;">🔄 إعادة الاختبار</button>
+        <button onclick="backToQuizSelector()" style="background:var(--cream);color:var(--slate);border:none;padding:10px 24px;border-radius:50px;font-weight:700;cursor:pointer;font-family:'Tajawal',sans-serif;">← اختبار آخر</button>
+      </div>
+    </div>
+  `;
+}
+
+// ==================== WRITING ====================
+function renderWritingPage() {
+  renderPhrases('writing-intro', writingPhrases.intro);
+  renderPhrases('writing-linking', writingPhrases.linking);
+  renderPhrases('writing-conclusion', writingPhrases.conclusion);
+  renderPhrases('writing-avoid', writingPhrases.avoid);
+  renderAbstractTemplate();
+  renderStartersGrid();
+}
+
+function renderPhrases(containerId, phrases) {
+  const el = document.getElementById(containerId);
+  if (!el || el.children.length > 0) return;
+  el.innerHTML = phrases.map(p => `
+    <div class="phrase-item">
+      <div>
+        <div class="phrase-en">${p.en}</div>
+        <div class="phrase-ar">${p.ar}</div>
+      </div>
+      <button class="copy-btn" onclick="copyText('${p.en.replace(/'/g,"\\'")}', this)" title="نسخ">📋</button>
+    </div>
+  `).join('');
+}
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).catch(() => {});
+  btn.textContent = '✅';
+  setTimeout(() => btn.textContent = '📋', 1500);
+}
+
+function renderAbstractTemplate() {
+  const el = document.getElementById('abstract-template');
+  if (!el || el.children.length > 0) return;
+  const sections = [
+    { title:'الغرض · Purpose', color:'#eef2ff', tc:'var(--indigo)', en:'This study aims to / investigates / examines...', ar:'ما هو هدف بحثك؟' },
+    { title:'المنهجية · Methodology', color:'#f0fdf4', tc:'var(--teal)', en:'Data were collected from [N] participants using [method]...', ar:'كيف جمعتِ البيانات؟' },
+    { title:'النتائج · Findings', color:'#fff7ed', tc:'#c2410c', en:'The findings reveal / indicate / demonstrate that...', ar:'ما الذي اكتشفتِه؟' },
+    { title:'الاستنتاج · Conclusion', color:'#f5f3ff', tc:'var(--purple)', en:'In conclusion, this study contributes to... Future research should...', ar:'ما أهمية النتائج؟' },
+  ];
+  el.innerHTML = sections.map(s => `
+    <div class="abstract-row">
+      <div class="abstract-label" style="background:${s.color};">
+        <div style="font-size:11px;font-weight:700;color:${s.tc};text-align:center;">${s.title}</div>
+      </div>
+      <div class="abstract-body">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--indigo);direction:ltr;margin-bottom:4px;">${s.en}</div>
+        <div style="font-size:11px;color:var(--muted);">${s.ar}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderStartersGrid() {
+  const el = document.getElementById('starters-grid');
+  if (!el || el.children.length > 0) return;
+  const starters = [
+    { cat:'افتتاح المقدمة', en:'This study aims to investigate...', color:'#eef2ff', tc:'var(--indigo)' },
+    { cat:'الإشارة للفجوة', en:'Little research has hitherto examined...', color:'#f0fdf4', tc:'var(--teal)' },
+    { cat:'ذكر الهدف', en:'The primary objective of this paper is to...', color:'#f5f3ff', tc:'var(--purple)' },
+    { cat:'وصف المنهجية', en:'Data were collected by means of...', color:'#fff1f2', tc:'var(--rose)' },
+    { cat:'تقديم النتائج', en:'The findings indicate that...', color:'#fffbeb', tc:'var(--gold)' },
+    { cat:'المقارنة', en:'In contrast to previous studies...', color:'#ecfeff', tc:'#0e7490' },
+    { cat:'الاستنتاج', en:'In conclusion, this study has demonstrated...', color:'#fdf4ff', tc:'#a21caf' },
+    { cat:'الاقتراحات', en:'Further research is warranted to explore...', color:'#fff7ed', tc:'#c2410c' },
+  ];
+  el.innerHTML = starters.map(s => `
+    <div style="background:${s.color};border-radius:10px;padding:12px 14px;cursor:pointer;transition:all 0.2s;border:1px solid transparent;" onclick="copyText('${s.en}',this.querySelector('.sg-copy'))" title="اضغط للنسخ">
+      <div style="font-size:10px;font-weight:700;color:${s.tc};margin-bottom:4px;">${s.cat}</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--slate);direction:ltr;">${s.en}</div>
+      <button class="sg-copy copy-btn" style="margin-top:4px;font-size:12px;">📋</button>
+    </div>
+  `).join('');
+}
+
+// ==================== TIPS ====================
+function renderTips() {
+  const grid = document.getElementById('tips-grid');
+  if (!grid || grid.children.length > 0) return;
+  grid.innerHTML = tips.map(t => {
+    const lvlStyle = t.level === 'B2'
+      ? 'background:var(--purple-light);color:var(--purple);'
+      : t.level === 'B1'
+      ? 'background:var(--indigo-light);color:var(--indigo);'
+      : 'background:var(--teal-light);color:var(--teal);';
+    return `
+    <div class="tip-card-item">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+        <div style="font-size:26px;">${t.emoji}</div>
+        <span class="tip-level-badge" style="${lvlStyle}">${t.level}</span>
+      </div>
+      <h4 style="font-size:14px;font-weight:800;margin-bottom:3px;">${t.title}</h4>
+      <div style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;direction:ltr;margin-bottom:8px;">${t.en}</div>
+      <p style="font-size:12px;color:#475569;line-height:1.8;">${t.body}</p>
+    </div>`;
+  }).join('');
+}
+
+// ==================== CHECKLIST ====================
+function renderChecklist() {
+  const cl = document.getElementById('checklist');
+  if (!cl) return;
+  cl.innerHTML = checkItems.map((item,i) => `
+    <label class="check-item">
+      <input type="checkbox" id="check-${i}" onchange="saveChecklist()">
+      <span id="check-label-${i}">${item}</span>
+    </label>
+  `).join('');
+  const saved = JSON.parse(localStorage.getItem('anwar_checklist') || '[]');
+  saved.forEach((v,i) => {
+    const cb = document.getElementById('check-'+i);
+    const lbl = document.getElementById('check-label-'+i);
+    if (cb) cb.checked = v;
+    if (v && lbl) lbl.style.textDecoration = 'line-through';
+  });
+}
+
+function saveChecklist() {
+  const vals = checkItems.map((_,i) => {
+    const cb = document.getElementById('check-'+i);
+    const lbl = document.getElementById('check-label-'+i);
+    if (cb && lbl) lbl.style.textDecoration = cb.checked ? 'line-through' : 'none';
+    return cb ? cb.checked : false;
+  });
+  localStorage.setItem('anwar_checklist', JSON.stringify(vals));
+}
+
+// ==================== NOTES ====================
+function saveNote() {
+  const input = document.getElementById('notes-input');
+  const text = input.value.trim();
+  if (!text) return;
+  notes.unshift({ text, date: new Date().toLocaleDateString('ar-MA'), id: Date.now() });
+  localStorage.setItem('notes', JSON.stringify(notes));
+  input.value = '';
+  renderNotesList();
+}
+
+function deleteNote(id) {
+  notes = notes.filter(n => n.id !== id);
+  localStorage.setItem('notes', JSON.stringify(notes));
+  renderNotesList();
+}
+
+function renderNotesList() {
+  const el = document.getElementById('notes-list');
+  if (!el) return;
+  if (!notes.length) {
+    el.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted);font-size:13px;">لا توجد ملاحظات محفوظة بعد.</div>';
+    return;
+  }
+  el.innerHTML = notes.map(n => `
+    <div class="saved-note-item">
+      <button class="note-del" onclick="deleteNote(${n.id})">🗑</button>
+      <div class="note-date">${n.date}</div>
+      <div>${n.text}</div>
+    </div>
+  `).join('');
+}
+
+// ==================== SERVICE WORKER FOR PWA ====================
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration failed:', err));
+  });
+}
+
+// ==================== INIT ====================
+document.addEventListener('DOMContentLoaded', () => {
+  renderLessons();
+  updateLessonProgress();
+  renderNotesList();
+  renderChecklist();
+});
+</script>
+</body>
+</html>
